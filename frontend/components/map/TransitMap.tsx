@@ -8,24 +8,24 @@ import {
 } from "react-leaflet";
 
 import { DEFAULT_MAP } from "@/lib/config";
-import { Vehicle } from "@/types/vehicle";
+import { Vehicle } from "../../types/vehicle";
 
-const vehicles: Vehicle[] = [
-  {
-    id: "TRAIN-001",
-    route: "Downtown Loop",
-    lat: 35.5951,
-    lng: -82.5515,
-    speed: 22,
-    status: "active",
-    lastUpdated: "Just now",
-  },
-];
+import { useVehicles } from "@/hooks/useVehicles";
+import { useVehicleStore } from "@/store/vehicleStore";
 
 export default function TransitMap() {
+
+  useVehicles();
+
+  const vehicles = useVehicleStore(
+    (state) => state.vehicles
+  );
+  
+  const center = DEFAULT_MAP.center as [number, number];
+
   return (
     <MapContainer
-      center={DEFAULT_MAP.center}
+      center={center}
       zoom={DEFAULT_MAP.zoom}
       style={{
         height: "600px",
@@ -44,7 +44,7 @@ export default function TransitMap() {
           position={[
             vehicle.lat,
             vehicle.lng,
-          ]}
+          ] as [number, number]}
         >
           <Popup>
             <strong>{vehicle.id}</strong>

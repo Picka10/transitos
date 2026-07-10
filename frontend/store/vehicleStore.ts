@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Vehicle } from "@/types/vehicle";
+import { Vehicle } from "../types/vehicle";
 
 interface VehicleState {
   vehicles: Vehicle[];
