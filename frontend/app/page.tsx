@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/navbar";
 import Map from "@/components/map/Map";
+import "leaflet/dist/leaflet.css";
 
 export default function Home() {
   return (
