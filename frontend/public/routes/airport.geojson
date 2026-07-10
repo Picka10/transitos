@@ -1,0 +1,54 @@
+{
+  "id": "airport-express",
+  "name": "Airport Express",
+  "color": "#16a34a",
+  "active": true,
+  "vehicleType": "train",
+  "defaultZoom": 12,
+
+  "bounds": [
+    [-82.57, 35.42],
+    [-82.50, 35.61]
+  ],
+
+  "shape": {
+    "type": "Feature",
+    "properties": {
+      "name": "Airport Express"
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [-82.5410, 35.6030],
+        [-82.5345, 35.5800],
+        [-82.5280, 35.5500],
+        [-82.5225, 35.5000],
+        [-82.5150, 35.4550]
+      ]
+    }
+  },
+
+  "stops": [
+    {
+      "id": "downtown-terminal",
+      "name": "Downtown Terminal",
+      "lat": 35.6030,
+      "lng": -82.5410,
+      "sequence": 1
+    },
+    {
+      "id": "south-park",
+      "name": "South Park",
+      "lat": 35.5800,
+      "lng": -82.5345,
+      "sequence": 2
+    },
+    {
+      "id": "airport",
+      "name": "Airport Terminal",
+      "lat": 35.4550,
+      "lng": -82.5150,
+      "sequence": 3
+    }
+  ]
+}

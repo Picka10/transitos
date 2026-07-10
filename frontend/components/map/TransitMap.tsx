@@ -1,36 +1,21 @@
 "use client";
 
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-} from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 
 import { DEFAULT_MAP } from "@/lib/config";
-import { Vehicle } from "../../types/vehicle";
 
-import { useVehicles } from "@/hooks/useVehicles";
-import { useVehicleStore } from "@/store/vehicleStore";
+import RouteLayer from "./RouteLayer";
+import VehicleLayer from "./VehicleLayer";
+import StopLayer from "./StopLayer";
 
 export default function TransitMap() {
-
-  useVehicles();
-
-  const vehicles = useVehicleStore(
-    (state) => state.vehicles
-  );
-  
-  const center = DEFAULT_MAP.center as [number, number];
-
   return (
     <MapContainer
-      center={center}
+      center={DEFAULT_MAP.center as [number, number]}
       zoom={DEFAULT_MAP.zoom}
       style={{
-        height: "600px",
+        height: "100vh",
         width: "100%",
-        borderRadius: "12px",
       }}
     >
       <TileLayer
@@ -38,27 +23,9 @@ export default function TransitMap() {
         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {vehicles.map((vehicle) => (
-        <Marker
-          key={vehicle.id}
-          position={[
-            vehicle.lat,
-            vehicle.lng,
-          ] as [number, number]}
-        >
-          <Popup>
-            <strong>{vehicle.id}</strong>
-            <br />
-            Route: {vehicle.route}
-            <br />
-            Speed: {vehicle.speed} mph
-            <br />
-            Status: {vehicle.status}
-            <br />
-            Updated: {vehicle.lastUpdated}
-          </Popup>
-        </Marker>
-      ))}
+      <RouteLayer />
+      <StopLayer />
+      <VehicleLayer />
     </MapContainer>
   );
 }
