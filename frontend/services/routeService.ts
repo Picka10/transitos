@@ -1,24 +1,15 @@
 import { Route } from "../types/route";
 
-const ROUTE_FILES = [
-  "downtown-loop",
-];
+const manifest = await fetch("/routes/routes.json")
+    .then(r => r.json());
 
-export async function getRoutes(): Promise<Route[]> {
-  const routes: Route[] = [];
+const routes = await Promise.all(
 
-  for (const file of ROUTE_FILES) {
-    const geoJson = await fetch(`/routes/${file}.geojson`).then((r) =>
-      r.json()
-    );
+    manifest.map(async (route) => {
 
-    routes.push({
-      id: file,
-      name: "Downtown Loop",
-      color: "#2563eb",
-      geoJson,
-    });
-  }
+        return fetch(`/routes/${route.file}`)
+            .then(r => r.json());
 
-  return routes;
-}
+    })
+
+);

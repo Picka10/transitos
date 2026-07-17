@@ -2,59 +2,33 @@
   "id": "downtown-loop",
   "name": "Downtown Loop",
   "color": "#2563eb",
+
   "active": true,
-  "vehicleType": "train",
+
   "defaultZoom": 14,
 
   "bounds": [
-    [-82.56, 35.59],
-    [-82.53, 35.61]
+    [-82.56,35.59],
+    [-82.53,35.61]
   ],
 
   "shape": {
-    "type": "Feature",
-    "properties": {
-      "name": "Downtown Loop"
-    },
-    "geometry": {
-      "type": "LineString",
-      "coordinates": [
-        [-82.5515, 35.5951],
-        [-82.5487, 35.5978],
-        [-82.5443, 35.6002],
-        [-82.5402, 35.6025]
-      ]
-    }
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-82.5515,35.5951],
+            [-82.5487,35.5978],
+            [-82.5443,35.6002]
+          ]
+        }
+      }
+    ]
   },
 
-  "stops": [
-    {
-      "id": "central",
-      "name": "Central Station",
-      "lat": 35.5951,
-      "lng": -82.5515,
-      "sequence": 1
-    },
-    {
-      "id": "market",
-      "name": "Market Street",
-      "lat": 35.5978,
-      "lng": -82.5487,
-      "sequence": 2
-    },
-    {
-      "id": "museum",
-      "name": "Museum District",
-      "lat": 35.6002,
-      "lng": -82.5443,
-      "sequence": 3
-    },
-    {
-      "id": "terminal",
-      "name": "Downtown Terminal",
-      "lat": 35.6025,
-      "lng": -82.5402,
-      "sequence": 4
-    }
-  ]
+  "stops": []
 }
